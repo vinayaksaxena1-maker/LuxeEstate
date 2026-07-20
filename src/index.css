@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+}
+
+/* Base Body Style */
+body {
+  background-color: #050505 !important;
+  color: #f5f5f5;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e1e24;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2b2b36;
+}
+
+/* 
+ * Sophisticated Dark Base Overrides
+ * This remaps standard light-mode classes to premium dark graphite elements
+ */
+
+/* Containers & Cards */
+.bg-white {
+  background-color: #0c0c0e !important;
+}
+.bg-slate-50\/50, .bg-slate-50, .bg-gray-50, .bg-gray-50\/50, .bg-slate-50\/30 {
+  background-color: #08080a !important;
+}
+.bg-slate-900, .bg-gray-900, .bg-slate-950 {
+  background-color: #050505 !important;
+}
+
+/* Borders */
+.border-gray-100, .border-slate-100, .border-gray-150, .border-slate-200, .border-gray-200, .border-gray-50, .border-slate-150 {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Typography Overrides */
+.text-slate-900, .text-gray-900, .text-gray-800, .text-slate-950, .text-gray-950, .text-slate-900, .text-neutral-900 {
+  color: #f5f5f5 !important;
+}
+.text-gray-600, .text-slate-600, .text-gray-700, .text-slate-700 {
+  color: #a3a3a3 !important;
+}
+.text-gray-500, .text-slate-500 {
+  color: #8a8a93 !important;
+}
+.text-gray-400, .text-slate-400 {
+  color: #71717a !important;
+}
+
+/* Form Inputs, Dropdowns and Ranges */
+input[type="text"], input[type="email"], input[type="password"], textarea, select {
+  background-color: #121215 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #f5f5f5 !important;
+}
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus, select:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15) !important;
+}
+
+/* Primary Button & Gradient Transitions */
+.from-emerald-600, .from-emerald-500 {
+  --tw-gradient-from: #2563eb !important;
+  --tw-gradient-to: #4f46e5 !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+.to-teal-500, .to-teal-400, .to-teal-600, .to-teal-300 {
+  --tw-gradient-to: #4f46e5 !important;
+}
+.bg-emerald-600, .bg-emerald-500, .bg-teal-600, .bg-slate-950 {
+  background-color: #2563eb !important;
+}
+.bg-emerald-600\/90 {
+  background-color: rgba(37, 99, 235, 0.9) !important;
+}
+.bg-emerald-50, .bg-emerald-500\/10, .bg-emerald-100\/50, .bg-emerald-100, .bg-teal-50 {
+  background-color: rgba(59, 130, 246, 0.08) !important;
+}
+.border-emerald-200, .border-emerald-500\/30, .border-emerald-100 {
+  border-color: rgba(59, 130, 246, 0.25) !important;
+}
+.text-emerald-600, .text-emerald-700, .text-emerald-400, .text-teal-400 {
+  color: #60a5fa !important;
+}
+.text-emerald-800 {
+  color: #93c5fd !important;
+}
+.hover\:bg-emerald-500:hover, .hover\:bg-emerald-700:hover, .hover\:from-emerald-700:hover {
+  background-color: #1d4ed8 !important;
+  background-image: none !important;
+}
+.hover\:text-emerald-600:hover, .hover\:text-emerald-500:hover {
+  color: #60a5fa !important;
+}
+.accent-emerald-600 {
+  accent-color: #3b82f6 !important;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(12, 12, 14, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glow-card {
+  position: relative;
+  overflow: hidden;
+}
+.glow-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+}
+

@@ -1,0 +1,6 @@
+{
+  "name": "LuxeEstate",
+  "description": "Enterprise-grade AI-powered Property Marketplace Prototype featuring Buy, Rent, Commercial, New Projects, Plots, Dashboards, and an AI Real Estate Assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
