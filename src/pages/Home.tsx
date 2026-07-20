@@ -102,53 +102,59 @@ export default function HomePage({ onNavigate, onSearch, onSelectProperty }: Hom
   const recentListings = PROPERTIES.slice(6, 10);
 
   return (
-    <div className="flex flex-col bg-slate-50/50 min-h-screen">
+    <div className="flex flex-col bg-[#f4f6f9] min-h-screen">
       
-      {/* 1. Hero Container & Premium Search */}
-      <section className="relative bg-slate-900 text-white overflow-hidden py-24 px-4 sm:px-6 lg:px-8">
+      {/* 1. 99acres-Style Premium Hero Container */}
+      <section 
+        className="relative bg-slate-900 text-white overflow-hidden py-20 px-4 sm:px-6 lg:px-8 bg-cover bg-center"
+        style={{ backgroundImage: "linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=1600&q=80')" }}
+      >
         
-        {/* Abstract Background Accents */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-600 rounded-full blur-3xl" />
-        </div>
-
         <div className="max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center">
           
-          <div className="inline-flex items-center space-x-2 px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-xs font-semibold text-blue-400 mb-6">
-            <Sparkles className="h-4.5 w-4.5 text-blue-400" />
-            <span>Introducing LuxeAI Property Valuation & Matchmaking</span>
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-blue-500/15 border border-blue-400/30 rounded-full text-xs font-bold text-blue-300 mb-6">
+            <Sparkles className="h-4 w-4 text-blue-300" />
+            <span>India's Smarter Property Hub with LuxeAI Valuation & RERA Verification</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-            The Intelligent Way <br />
-            <span className="bg-gradient-to-r from-blue-400 to-indigo-300 bg-clip-text text-transparent">To Find Your Home</span>
+          <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white mb-4 leading-tight">
+            Find a home you'll love
           </h1>
           
-          <p className="text-lg text-slate-300 font-medium mb-10 max-w-2xl">
-            Explore 150+ ultra-realistic listings across India's premier metropolitan tech corridors with AI-driven pricing and smart ROI forecasts.
+          <p className="text-base text-slate-200 font-medium mb-8 max-w-xl">
+            Explore premium verified listings across India's top tech corridors with actual market indicators and document checklist assistance.
           </p>
 
-          {/* Search Tab Panel */}
-          <div className="w-full max-w-3xl bg-zinc-950/70 rounded-3xl shadow-2xl p-6 text-white border border-white/5 backdrop-blur-xl">
+          {/* Elevated Pure White Search Widget */}
+          <div className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl p-5 md:p-6 text-slate-800 border border-slate-100">
             <form onSubmit={handleSearchSubmit}>
               
-              {/* Category tabs */}
-              <div className="flex space-x-2 border-b border-white/5 pb-4 mb-4 overflow-x-auto">
+              {/* Category tabs inspired by 99acres */}
+              <div className="flex space-x-6 border-b border-slate-200 pb-3 mb-4 overflow-x-auto scrollbar-none">
                 <button
                   type="button"
-                  onClick={() => setPurpose("Buy")}
-                  className={`px-4 py-2 text-sm font-bold rounded-xl transition-all cursor-pointer ${
-                    purpose === "Buy" ? "bg-blue-600 text-white" : "text-zinc-400 hover:text-white"
+                  onClick={() => {
+                    setPurpose("Buy");
+                    setPropertyType("Apartment");
+                  }}
+                  className={`pb-3 text-sm font-bold transition-all cursor-pointer whitespace-nowrap relative ${
+                    purpose === "Buy" && propertyType !== "Commercial" && propertyType !== "Plot"
+                      ? "text-[#005ca8] border-b-2 border-[#005ca8]"
+                      : "text-slate-500 hover:text-slate-800"
                   }`}
                 >
                   Buy Properties
                 </button>
                 <button
                   type="button"
-                  onClick={() => setPurpose("Rent")}
-                  className={`px-4 py-2 text-sm font-bold rounded-xl transition-all cursor-pointer ${
-                    purpose === "Rent" ? "bg-blue-600 text-white" : "text-zinc-400 hover:text-white"
+                  onClick={() => {
+                    setPurpose("Rent");
+                    setPropertyType("Apartment");
+                  }}
+                  className={`pb-3 text-sm font-bold transition-all cursor-pointer whitespace-nowrap relative ${
+                    purpose === "Rent"
+                      ? "text-[#005ca8] border-b-2 border-[#005ca8]"
+                      : "text-slate-500 hover:text-slate-800"
                   }`}
                 >
                   Rent Homes
@@ -159,65 +165,89 @@ export default function HomePage({ onNavigate, onSearch, onSelectProperty }: Hom
                     setPurpose("Buy");
                     setPropertyType("Commercial");
                   }}
-                  className={`px-4 py-2 text-sm font-bold rounded-xl transition-all cursor-pointer ${
-                    propertyType === "Commercial" ? "bg-blue-500/10 text-blue-400 font-semibold" : "text-zinc-400 hover:text-white"
+                  className={`pb-3 text-sm font-bold transition-all cursor-pointer whitespace-nowrap relative ${
+                    propertyType === "Commercial"
+                      ? "text-[#005ca8] border-b-2 border-[#005ca8]"
+                      : "text-slate-500 hover:text-slate-800"
                   }`}
                 >
                   Commercial Spaces
                 </button>
                 <button
                   type="button"
-                  onClick={() => handleQuickCollection("Plot")}
-                  className="px-4 py-2 text-sm font-bold rounded-xl text-zinc-400 hover:text-white cursor-pointer"
+                  onClick={() => {
+                    setPurpose("Buy");
+                    setPropertyType("Plot");
+                  }}
+                  className={`pb-3 text-sm font-bold transition-all cursor-pointer whitespace-nowrap relative ${
+                    propertyType === "Plot"
+                      ? "text-[#005ca8] border-b-2 border-[#005ca8]"
+                      : "text-slate-500 hover:text-slate-800"
+                  }`}
                 >
-                  Residential Plots
+                  Plots / Land
                 </button>
               </div>
 
-              {/* Main Fields Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-3 items-center">
+              {/* Main Segmented Search Row */}
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-2 bg-slate-50 p-2 rounded-xl border border-slate-200">
                 
-                <div className="flex flex-col text-left">
-                  <label className="text-[10px] font-bold text-zinc-400 uppercase mb-1 px-1">Location City</label>
-                  <select 
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    className="w-full bg-zinc-900 border border-white/10 rounded-xl p-2.5 text-sm font-medium focus:outline-none focus:border-blue-500 text-white appearance-none cursor-pointer"
-                  >
-                    <option value="Bangalore">Bangalore</option>
-                    <option value="Mumbai">Mumbai</option>
-                    <option value="Delhi NCR">Delhi NCR</option>
-                    <option value="Pune">Pune</option>
-                    <option value="Hyderabad">Hyderabad</option>
-                    <option value="Chennai">Chennai</option>
-                  </select>
+                {/* City select segment */}
+                <div className="md:col-span-3 flex items-center px-3 py-1 bg-white rounded-lg border border-slate-200 md:border-0 md:bg-transparent">
+                  <MapPin className="h-4 w-4 text-[#005ca8] shrink-0 mr-2" />
+                  <div className="flex-1 text-left">
+                    <span className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider leading-none">City</span>
+                    <select 
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
+                      className="w-full bg-transparent p-0 text-sm font-bold text-slate-800 focus:outline-none border-0 appearance-none cursor-pointer mt-0.5"
+                    >
+                      <option value="Bangalore">Bangalore</option>
+                      <option value="Mumbai">Mumbai</option>
+                      <option value="Delhi NCR">Delhi NCR</option>
+                      <option value="Pune">Pune</option>
+                      <option value="Hyderabad">Hyderabad</option>
+                      <option value="Chennai">Chennai</option>
+                    </select>
+                  </div>
                 </div>
 
-                <div className="flex flex-col text-left">
-                  <label className="text-[10px] font-bold text-zinc-400 uppercase mb-1 px-1">Property Type</label>
-                  <select 
-                    value={propertyType}
-                    onChange={(e) => setPropertyType(e.target.value)}
-                    className="w-full bg-zinc-900 border border-white/10 rounded-xl p-2.5 text-sm font-medium focus:outline-none focus:border-blue-500 text-white appearance-none cursor-pointer"
-                  >
-                    <option value="Apartment">Apartment</option>
-                    <option value="Villa">Villa / House</option>
-                    <option value="Commercial">Commercial</option>
-                    <option value="Plot">Plot / Land</option>
-                  </select>
+                {/* Vertical Divider for desktop */}
+                <div className="hidden md:block h-8 w-px bg-slate-200 self-center" />
+
+                {/* Property Type select segment */}
+                <div className="md:col-span-3 flex items-center px-3 py-1 bg-white rounded-lg border border-slate-200 md:border-0 md:bg-transparent">
+                  <Home className="h-4 w-4 text-[#005ca8] shrink-0 mr-2" />
+                  <div className="flex-1 text-left">
+                    <span className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider leading-none">Type</span>
+                    <select 
+                      value={propertyType}
+                      onChange={(e) => setPropertyType(e.target.value)}
+                      className="w-full bg-transparent p-0 text-sm font-bold text-slate-800 focus:outline-none border-0 appearance-none cursor-pointer mt-0.5"
+                    >
+                      <option value="Apartment">Apartment</option>
+                      <option value="Villa">Villa / House</option>
+                      <option value="Commercial">Commercial</option>
+                      <option value="Plot">Plot / Land</option>
+                    </select>
+                  </div>
                 </div>
 
-                <div className="flex flex-col text-left md:col-span-2 relative">
-                  <label className="text-[10px] font-bold text-zinc-400 uppercase mb-1 px-1">Search Keywords</label>
-                  <div className="relative">
+                {/* Vertical Divider for desktop */}
+                <div className="hidden md:block h-8 w-px bg-slate-200 self-center" />
+
+                {/* Search query input segment */}
+                <div className="md:col-span-5 flex items-center px-3 py-1 bg-white rounded-lg border border-slate-200 md:border-0 md:bg-transparent">
+                  <Search className="h-4 w-4 text-slate-400 shrink-0 mr-2" />
+                  <div className="flex-1 text-left">
+                    <span className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider leading-none">Keywords</span>
                     <input 
                       type="text"
-                      placeholder="e.g. Near Metro, Worli, 3 BHK, Penthouse..."
+                      placeholder="e.g. Worli, 3 BHK, Near Metro..."
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
-                      className="w-full bg-zinc-900 border border-white/10 rounded-xl p-2.5 pl-10 text-sm font-medium focus:outline-none focus:border-blue-500 text-white"
+                      className="w-full bg-transparent p-0 text-sm font-bold text-slate-800 focus:outline-none border-0 mt-0.5 placeholder-slate-400"
                     />
-                    <Search className="absolute left-3.5 top-3.5 h-4 w-4 text-zinc-500" />
                   </div>
                 </div>
 
@@ -225,12 +255,12 @@ export default function HomePage({ onNavigate, onSearch, onSelectProperty }: Hom
 
               {/* Advanced Collapsible Filter Drawer */}
               {showAdvanced && (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 mt-6 border-t border-white/5 animate-in fade-in duration-200">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-5 mt-5 border-t border-slate-100 text-left animate-in fade-in duration-200">
                   
-                  <div className="flex flex-col text-left">
-                    <div className="flex justify-between text-[10px] font-bold text-zinc-400 uppercase mb-1 px-1">
+                  <div className="flex flex-col">
+                    <div className="flex justify-between text-[10px] font-bold text-slate-500 uppercase mb-1 px-1">
                       <span>Max Budget (INR)</span>
-                      <span className="text-blue-400 font-extrabold">₹{(budgetMax / 10000000).toFixed(2)} Cr</span>
+                      <span className="text-[#005ca8] font-extrabold">₹{(budgetMax / 10000000).toFixed(2)} Cr</span>
                     </div>
                     <input 
                       type="range"
@@ -239,16 +269,16 @@ export default function HomePage({ onNavigate, onSearch, onSelectProperty }: Hom
                       step={5000000}
                       value={budgetMax}
                       onChange={(e) => setBudgetMax(Number(e.target.value))}
-                      className="w-full accent-blue-500"
+                      className="w-full accent-[#005ca8] cursor-pointer mt-1"
                     />
                   </div>
 
-                  <div className="flex flex-col text-left">
-                    <label className="text-[10px] font-bold text-zinc-400 uppercase mb-1 px-1">Bedrooms (BHK)</label>
+                  <div className="flex flex-col">
+                    <label className="text-[10px] font-bold text-slate-500 uppercase mb-1.5 px-1">Bedrooms (BHK)</label>
                     <select 
                       value={bedrooms}
                       onChange={(e) => setBedrooms(e.target.value)}
-                      className="w-full bg-zinc-900 border border-white/10 rounded-xl p-2.5 text-sm font-medium focus:outline-none focus:border-blue-500 text-white appearance-none cursor-pointer"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs font-bold text-slate-700 focus:outline-none focus:border-[#005ca8] cursor-pointer"
                     >
                       <option value="">Any BHK</option>
                       <option value="2">2 BHK</option>
@@ -258,10 +288,10 @@ export default function HomePage({ onNavigate, onSearch, onSelectProperty }: Hom
                     </select>
                   </div>
 
-                  <div className="flex flex-col text-left">
-                    <div className="flex justify-between text-[10px] font-bold text-zinc-400 uppercase mb-1 px-1">
+                  <div className="flex flex-col">
+                    <div className="flex justify-between text-[10px] font-bold text-slate-500 uppercase mb-1 px-1">
                       <span>Max Area (Sq Ft)</span>
-                      <span className="text-blue-400 font-extrabold">{areaMax} Sq Ft</span>
+                      <span className="text-[#005ca8] font-extrabold">{areaMax} Sq Ft</span>
                     </div>
                     <input 
                       type="range"
@@ -270,7 +300,7 @@ export default function HomePage({ onNavigate, onSearch, onSelectProperty }: Hom
                       step={500}
                       value={areaMax}
                       onChange={(e) => setAreaMax(Number(e.target.value))}
-                      className="w-full accent-blue-500"
+                      className="w-full accent-[#005ca8] cursor-pointer mt-1"
                     />
                   </div>
 
@@ -278,22 +308,25 @@ export default function HomePage({ onNavigate, onSearch, onSelectProperty }: Hom
               )}
 
               {/* Advanced toggle & search submit */}
-              <div className="flex flex-col sm:flex-row justify-between items-center mt-6 pt-4 border-t border-white/5 gap-4">
+              <div className="flex flex-col sm:flex-row justify-between items-center mt-5 pt-4 border-t border-slate-100 gap-4">
                 <button
                   type="button"
                   onClick={() => setShowAdvanced(!showAdvanced)}
-                  className="text-xs font-bold text-zinc-400 hover:text-blue-400 flex items-center space-x-1 cursor-pointer"
+                  className="text-xs font-bold text-slate-500 hover:text-[#005ca8] flex items-center space-x-1 cursor-pointer transition-colors"
                 >
-                  <span>{showAdvanced ? "Hide" : "Show"} Advanced AI Filters</span>
+                  <span>{showAdvanced ? "Hide" : "Show"} Advanced Filters</span>
                 </button>
 
-                <div className="flex space-x-2 w-full sm:w-auto">
+                <div className="flex items-center space-x-3 w-full sm:w-auto">
+                  <span className="hidden sm:inline-block text-xs font-semibold text-slate-400">
+                    Popular: <span className="text-slate-600 font-bold">RERA Approved</span>, <span className="text-slate-600 font-bold">Owner Listings</span>
+                  </span>
                   <button
                     type="submit"
-                    className="flex-1 sm:flex-none inline-flex items-center justify-center space-x-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl shadow-lg shadow-blue-500/10 transition-all cursor-pointer"
+                    className="flex-1 sm:flex-none inline-flex items-center justify-center space-x-2 px-8 py-3 bg-[#005ca8] hover:bg-[#004b87] text-white text-sm font-bold rounded-xl shadow-md shadow-blue-500/10 transition-all cursor-pointer"
                   >
-                    <Search className="h-4.5 w-4.5" />
-                    <span>Search Marketplace</span>
+                    <Search className="h-4.5 w-4.5 text-white" />
+                    <span>Search Properties</span>
                   </button>
                 </div>
               </div>
@@ -305,13 +338,13 @@ export default function HomePage({ onNavigate, onSearch, onSelectProperty }: Hom
       </section>
 
       {/* 2. Counter Metrics Bar */}
-      <section className="bg-zinc-950 border-b border-white/5 py-6">
+      <section className="bg-white border-b border-slate-200/80 py-5 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {stats.map((stat, idx) => (
               <div key={idx} className="flex flex-col items-center">
-                <span className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">{stat.value}</span>
-                <span className="text-xs text-zinc-500 font-semibold uppercase mt-1">{stat.label}</span>
+                <span className="text-2xl sm:text-3xl font-black text-[#005ca8] tracking-tight">{stat.value}</span>
+                <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-1">{stat.label}</span>
               </div>
             ))}
           </div>
@@ -322,12 +355,12 @@ export default function HomePage({ onNavigate, onSearch, onSelectProperty }: Hom
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
         <div className="text-center md:text-left mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <span className="text-xs font-bold text-blue-400 uppercase tracking-widest">Premium Collections</span>
-            <h2 className="text-3xl font-extrabold text-white tracking-tight mt-1">Explore Curated Lifestyles</h2>
+            <span className="text-xs font-bold text-[#005ca8] uppercase tracking-widest">Premium Collections</span>
+            <h2 className="text-3xl font-black text-slate-900 tracking-tight mt-1">Explore Curated Lifestyles</h2>
           </div>
-          <button onClick={() => handleQuickCollection("Apartment")} className="text-xs font-bold text-blue-400 hover:text-blue-300 flex items-center space-x-1 cursor-pointer">
+          <button onClick={() => handleQuickCollection("Apartment")} className="text-xs font-bold text-[#005ca8] hover:text-blue-600 flex items-center space-x-1 cursor-pointer transition-colors">
             <span>Browse All Listings</span>
-            <ChevronRight className="h-4 w-4 text-blue-400" />
+            <ChevronRight className="h-4 w-4 text-[#005ca8]" />
           </button>
         </div>
 
@@ -379,13 +412,13 @@ export default function HomePage({ onNavigate, onSearch, onSelectProperty }: Hom
       </section>
 
       {/* 4. Showcase Hotspot Listings (Featured) */}
-      <section className="py-16 bg-white border-y border-gray-100">
+      <section className="py-16 bg-white border-y border-slate-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center md:text-left mb-10">
-            <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest">Selected Properties</span>
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight mt-1">High-Yielding Opportunities</h2>
-            <p className="text-sm text-gray-500 font-medium max-w-lg mt-2">
+            <span className="text-xs font-bold text-[#005ca8] uppercase tracking-widest">Selected Properties</span>
+            <h2 className="text-3xl font-black text-slate-900 tracking-tight mt-1">High-Yielding Opportunities</h2>
+            <p className="text-sm text-slate-500 font-medium max-w-lg mt-2">
               Our AI models rate these high-ROI listings as exceptional investments.
             </p>
           </div>
@@ -395,24 +428,24 @@ export default function HomePage({ onNavigate, onSearch, onSelectProperty }: Hom
               <div 
                 key={property.id} 
                 onClick={() => onSelectProperty(property.id)}
-                className="group bg-slate-50 border border-gray-150 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
+                className="group bg-slate-50 border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
               >
-                <div className="h-48 w-full overflow-hidden bg-gray-200">
+                <div className="h-48 w-full overflow-hidden bg-slate-100">
                   <img src={property.images[0]} alt={property.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" referrerPolicy="no-referrer" />
                 </div>
                 <div className="p-4">
                   <div className="flex justify-between items-center mb-1">
-                    <span className="text-lg font-extrabold text-gray-950">{property.formattedPrice}</span>
-                    <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                    <span className="text-lg font-black text-[#005ca8]">{property.formattedPrice}</span>
+                    <span className="text-[10px] font-bold text-[#005ca8] bg-[#005ca8]/10 px-2 py-0.5 rounded border border-[#005ca8]/5">
                       ROI: {property.roi}%
                     </span>
                   </div>
-                  <h3 className="text-sm font-bold text-gray-800 line-clamp-1 mb-2">{property.title}</h3>
-                  <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">{property.description}</p>
+                  <h3 className="text-sm font-bold text-slate-800 line-clamp-1 mb-2 group-hover:text-[#005ca8] transition-colors">{property.title}</h3>
+                  <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">{property.description}</p>
                   
-                  <div className="mt-4 pt-3 border-t border-gray-150 flex justify-between items-center text-[10px] text-gray-400 font-bold uppercase">
+                  <div className="mt-4 pt-3 border-t border-slate-200/60 flex justify-between items-center text-[10px] text-slate-400 font-bold uppercase">
                     <span>{property.locality}, {property.city}</span>
-                    <span className="text-emerald-600">AI Score: {property.investmentScore}%</span>
+                    <span className="text-[#005ca8]">AI Score: {property.investmentScore}%</span>
                   </div>
                 </div>
               </div>
@@ -425,8 +458,8 @@ export default function HomePage({ onNavigate, onSearch, onSelectProperty }: Hom
       {/* 5. Featured Cities Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
         <div className="text-center md:text-left mb-10">
-          <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest">Active Metros</span>
-          <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight mt-1">Featured Real Estate Hubs</h2>
+          <span className="text-xs font-bold text-[#005ca8] uppercase tracking-widest">Active Metros</span>
+          <h2 className="text-3xl font-black text-slate-900 tracking-tight mt-1">Featured Real Estate Hubs</h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -463,17 +496,17 @@ export default function HomePage({ onNavigate, onSearch, onSelectProperty }: Hom
       </section>
 
       {/* 6. Partner Builders Spotlight */}
-      <section className="py-16 bg-slate-900 text-white">
+      <section className="py-16 bg-slate-50 border-y border-slate-200/80 text-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
-              <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest">National Trust</span>
-              <h2 className="text-3xl font-extrabold text-white tracking-tight mt-1">Featured Builders & Architects</h2>
+              <span className="text-xs font-bold text-[#005ca8] uppercase tracking-widest">National Trust</span>
+              <h2 className="text-3xl font-black text-slate-900 tracking-tight mt-1">Featured Builders & Architects</h2>
             </div>
-            <button onClick={() => onNavigate(ActivePage.BUILDERS)} className="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center space-x-1 self-center cursor-pointer">
+            <button onClick={() => onNavigate(ActivePage.BUILDERS)} className="text-xs font-bold text-[#005ca8] hover:text-blue-600 flex items-center space-x-1 self-center cursor-pointer transition-colors">
               <span>View All Builders</span>
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4 text-[#005ca8]" />
             </button>
           </div>
 
@@ -482,13 +515,13 @@ export default function HomePage({ onNavigate, onSearch, onSelectProperty }: Hom
               <div 
                 key={builder.id}
                 onClick={() => onNavigate(ActivePage.BUILDERS)}
-                className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-6 flex flex-col items-center justify-center text-center hover:bg-slate-800 hover:border-emerald-500 transition-all duration-300 cursor-pointer"
+                className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col items-center justify-center text-center hover:border-[#005ca8] hover:shadow-lg hover:scale-[1.03] transition-all duration-300 cursor-pointer"
               >
-                <div className="h-12 w-12 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center font-black text-white text-sm tracking-tight shadow-md mb-3">
+                <div className="h-12 w-12 rounded-xl bg-[#005ca8]/10 flex items-center justify-center font-black text-[#005ca8] text-sm tracking-tight shadow-sm mb-3">
                   {builder.logo}
                 </div>
-                <h3 className="text-xs font-bold text-white tracking-tight line-clamp-1">{builder.name}</h3>
-                <span className="text-[10px] text-gray-400 mt-1 font-semibold">{builder.experience} Years Exp</span>
+                <h3 className="text-xs font-bold text-slate-800 tracking-tight line-clamp-1">{builder.name}</h3>
+                <span className="text-[10px] text-slate-400 mt-1 font-semibold">{builder.experience} Years Exp</span>
               </div>
             ))}
           </div>
@@ -500,12 +533,12 @@ export default function HomePage({ onNavigate, onSearch, onSelectProperty }: Hom
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
         <div className="text-center md:text-left mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest">Smart Spatial Indexes</span>
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight mt-1">Trending Investment Localities</h2>
+            <span className="text-xs font-bold text-[#005ca8] uppercase tracking-widest">Smart Spatial Indexes</span>
+            <h2 className="text-3xl font-black text-slate-900 tracking-tight mt-1">Trending Investment Localities</h2>
           </div>
-          <button onClick={() => onNavigate(ActivePage.LOCALITIES)} className="text-xs font-bold text-emerald-600 hover:text-emerald-500 flex items-center space-x-1 cursor-pointer">
+          <button onClick={() => onNavigate(ActivePage.LOCALITIES)} className="text-xs font-bold text-[#005ca8] hover:text-blue-600 flex items-center space-x-1 cursor-pointer transition-colors">
             <span>Explore Locality Directory</span>
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-4 w-4 text-[#005ca8]" />
           </button>
         </div>
 
@@ -530,23 +563,23 @@ export default function HomePage({ onNavigate, onSearch, onSelectProperty }: Hom
                 });
                 onNavigate(ActivePage.SEARCH_RESULTS);
               }}
-              className="bg-white border border-gray-100 rounded-2xl p-5 hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-pointer"
+              className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-[#005ca8] hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-pointer"
             >
               <div>
                 <div className="flex justify-between items-center mb-3">
                   <span className="text-xs font-extrabold text-slate-900">{loc.name}</span>
-                  <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                  <span className="text-[10px] font-bold text-[#005ca8] bg-[#005ca8]/10 px-2 py-0.5 rounded border border-[#005ca8]/5">
                     Score: {loc.livabilityScore}/10
                   </span>
                 </div>
-                <p className="text-[11px] text-gray-400 font-semibold uppercase">{loc.city}</p>
-                <div className="mt-3 flex items-center space-x-1 text-slate-900 font-bold text-sm">
-                  <TrendingUp className="h-4 w-4 text-emerald-500 shrink-0" />
+                <p className="text-[11px] text-slate-400 font-bold uppercase">{loc.city}</p>
+                <div className="mt-3 flex items-center space-x-1 text-slate-950 font-black text-sm">
+                  <TrendingUp className="h-4 w-4 text-[#005ca8] shrink-0" />
                   <span>₹{loc.avgPricePerSqFt.toLocaleString("en-IN")}/sq.ft</span>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-gray-50 mt-4 flex justify-between items-center text-[10px] font-bold text-gray-500">
+              <div className="pt-4 border-t border-slate-100 mt-4 flex justify-between items-center text-[10px] font-bold text-slate-500">
                 <span>YoY Appreciation</span>
                 <span className="text-emerald-600">+{loc.yoyGrowth}%</span>
               </div>
@@ -556,72 +589,72 @@ export default function HomePage({ onNavigate, onSearch, onSelectProperty }: Hom
       </section>
 
       {/* 8. Customer Reviews Section */}
-      <section className="py-16 bg-white border-t border-gray-100">
+      <section className="py-16 bg-white border-t border-slate-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center mb-12">
-            <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest">Testimonials</span>
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight mt-1">Client Trust Stories</h2>
+            <span className="text-xs font-bold text-[#005ca8] uppercase tracking-widest">Testimonials</span>
+            <h2 className="text-3xl font-black text-slate-900 tracking-tight mt-1">Client Trust Stories</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            <div className="bg-slate-50 border border-gray-150 p-6 rounded-2xl flex flex-col justify-between">
+            <div className="bg-slate-50 border border-slate-200/80 p-6 rounded-2xl flex flex-col justify-between shadow-sm">
               <div>
                 <div className="flex text-amber-500 space-x-1 mb-4">
                   {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
                 </div>
-                <p className="text-xs text-gray-600 italic leading-relaxed">
-                  "LuxeEstate's AI price trend forecaster predicted the appreciation index in Whitefield perfectly. I saved nearly ₹15 Lakhs by buying early from Prestige Group."
+                <p className="text-xs text-slate-600 italic leading-relaxed">
+                  "LuxeEstate's AI price trend forecaster predicted the appreciation index in Whitefield perfectly. I saved nearly ₹15 Lakhs by buying early."
                 </p>
               </div>
-              <div className="flex items-center space-x-3 mt-6 pt-4 border-t border-gray-150">
-                <div className="h-10 w-10 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-xs">
+              <div className="flex items-center space-x-3 mt-6 pt-4 border-t border-slate-200">
+                <div className="h-10 w-10 rounded-full bg-blue-50 text-[#005ca8] font-bold flex items-center justify-center text-xs">
                   SK
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-gray-800">Sandeep Kulkarni</h4>
-                  <span className="text-[10px] text-gray-400 font-semibold">IT Director, Bangalore</span>
+                  <h4 className="text-xs font-bold text-slate-800">Sandeep Kulkarni</h4>
+                  <span className="text-[10px] text-slate-400 font-semibold">IT Director, Bangalore</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-slate-50 border border-gray-150 p-6 rounded-2xl flex flex-col justify-between">
+            <div className="bg-slate-50 border border-slate-200/80 p-6 rounded-2xl flex flex-col justify-between shadow-sm">
               <div>
                 <div className="flex text-amber-500 space-x-1 mb-4">
                   {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
                 </div>
-                <p className="text-xs text-gray-600 italic leading-relaxed">
-                  "The interface is incredibly clean — it feels like using an Apple product. The document checklist and RERA matching guarantees absolute trust. Exceptional prototype."
+                <p className="text-xs text-slate-600 italic leading-relaxed">
+                  "The interface is incredibly clean — it feels like using an elite corporate hub. The document checklist and RERA matching guarantees absolute trust."
                 </p>
               </div>
-              <div className="flex items-center space-x-3 mt-6 pt-4 border-t border-gray-150">
-                <div className="h-10 w-10 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-xs">
+              <div className="flex items-center space-x-3 mt-6 pt-4 border-t border-slate-200">
+                <div className="h-10 w-10 rounded-full bg-blue-50 text-[#005ca8] font-bold flex items-center justify-center text-xs">
                   RM
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-gray-800">Ritu Mehta</h4>
-                  <span className="text-[10px] text-gray-400 font-semibold">Homeowner, Worli Mumbai</span>
+                  <h4 className="text-xs font-bold text-slate-800">Ritu Mehta</h4>
+                  <span className="text-[10px] text-slate-400 font-semibold">Homeowner, Worli Mumbai</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-slate-50 border border-gray-150 p-6 rounded-2xl flex flex-col justify-between">
+            <div className="bg-slate-50 border border-slate-200/80 p-6 rounded-2xl flex flex-col justify-between shadow-sm">
               <div>
                 <div className="flex text-amber-500 space-x-1 mb-4">
                   {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
                 </div>
-                <p className="text-xs text-gray-600 italic leading-relaxed">
+                <p className="text-xs text-slate-600 italic leading-relaxed">
                   "Selling commercial assets has never been more fluid. LuxeEstate's developer analytics panel keeps our sales pipelines fully transparent. Highly recommend."
                 </p>
               </div>
-              <div className="flex items-center space-x-3 mt-6 pt-4 border-t border-gray-150">
-                <div className="h-10 w-10 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-xs">
+              <div className="flex items-center space-x-3 mt-6 pt-4 border-t border-slate-200">
+                <div className="h-10 w-10 rounded-full bg-blue-50 text-[#005ca8] font-bold flex items-center justify-center text-xs">
                   AK
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-gray-800">Arjun Kapoor</h4>
-                  <span className="text-[10px] text-gray-400 font-semibold">VP Operations, Lodha Group</span>
+                  <h4 className="text-xs font-bold text-slate-800">Arjun Kapoor</h4>
+                  <span className="text-[10px] text-slate-400 font-semibold">VP Operations, Lodha Group</span>
                 </div>
               </div>
             </div>

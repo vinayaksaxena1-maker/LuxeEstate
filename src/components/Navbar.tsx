@@ -46,18 +46,18 @@ export default function Navbar({ activePage, onNavigate, savedCount, compareCoun
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/5 transition-all duration-200">
+    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all duration-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           
           {/* Logo & Slogan */}
           <div className="flex items-center space-x-2 cursor-pointer" onClick={() => onNavigate(ActivePage.HOME)}>
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-blue-500/15">
+            <div className="h-10 w-10 rounded-xl bg-[#005ca8] flex items-center justify-center text-white shadow-md shadow-blue-500/10">
               <Building2 className="h-6 w-6 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold tracking-tight text-white leading-none">LuxeEstate</span>
-              <span className="text-[10px] font-semibold text-blue-400 tracking-wider uppercase mt-1">AI-Powered</span>
+              <span className="text-xl font-extrabold tracking-tight text-[#005ca8] leading-none">LuxeEstate</span>
+              <span className="text-[10px] font-bold text-teal-600 tracking-wider uppercase mt-1">99acres Companion</span>
             </div>
           </div>
 
@@ -70,26 +70,26 @@ export default function Navbar({ activePage, onNavigate, savedCount, compareCoun
                   onNavigate(item.page);
                   setIsOpen(false);
                 }}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
+                className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer ${
                   activePage === item.page
-                    ? "bg-blue-500/10 text-blue-400"
-                    : "text-zinc-400 hover:text-blue-400 hover:bg-zinc-900/60"
+                    ? "bg-[#005ca8]/10 text-[#005ca8]"
+                    : "text-slate-700 hover:text-[#005ca8] hover:bg-slate-50"
                 }`}
               >
                 {item.label}
               </button>
             ))}
             
-            <div className="h-4 w-px bg-white/10 mx-2" />
+            <div className="h-4 w-px bg-slate-200 mx-2" />
 
             {secondaryNavItems.map((item) => (
               <button
                 key={item.page}
                 onClick={() => onNavigate(item.page)}
-                className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
+                className={`px-3 py-2 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
                   activePage === item.page
-                    ? "text-blue-400"
-                    : "text-zinc-500 hover:text-blue-400"
+                    ? "text-[#005ca8]"
+                    : "text-slate-500 hover:text-[#005ca8] hover:bg-slate-50"
                 }`}
               >
                 {item.label}
@@ -98,15 +98,15 @@ export default function Navbar({ activePage, onNavigate, savedCount, compareCoun
           </div>
 
           {/* Right Action Icons */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-3">
             {/* Compare Badge */}
             {compareCount > 0 && (
               <button 
                 onClick={() => onNavigate(ActivePage.DASHBOARD)}
-                className="relative p-2 text-zinc-400 hover:text-blue-400 hover:bg-white/5 rounded-lg transition-colors cursor-pointer"
+                className="relative p-2 text-slate-600 hover:text-[#005ca8] hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
                 title="Compare Properties"
               >
-                <div className="h-5 w-5 flex items-center justify-center text-xs font-bold border border-blue-500/30 bg-blue-500/10 text-blue-400 rounded-md">
+                <div className="h-5 w-5 flex items-center justify-center text-xs font-bold border border-[#005ca8]/30 bg-[#005ca8]/10 text-[#005ca8] rounded-md">
                   {compareCount}
                 </div>
               </button>
@@ -115,7 +115,7 @@ export default function Navbar({ activePage, onNavigate, savedCount, compareCoun
             {/* Wishlist Icon */}
             <button
               onClick={() => onNavigate(ActivePage.DASHBOARD)}
-              className="relative p-2 text-zinc-400 hover:text-rose-500 hover:bg-white/5 rounded-lg transition-colors cursor-pointer"
+              className="relative p-2 text-slate-600 hover:text-rose-600 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
             >
               <Heart className="h-5 w-5" />
               {savedCount > 0 && (
@@ -127,21 +127,30 @@ export default function Navbar({ activePage, onNavigate, savedCount, compareCoun
 
             {/* Notifications */}
             <div className="relative">
-              <button className="p-2 text-zinc-400 hover:text-blue-400 hover:bg-white/5 rounded-lg transition-colors cursor-pointer">
+              <button className="p-2 text-slate-600 hover:text-[#005ca8] hover:bg-slate-100 rounded-lg transition-colors cursor-pointer">
                 <Bell className="h-5 w-5" />
-                <span className="absolute top-1.5 right-1.5 h-2 w-2 bg-blue-500 rounded-full animate-pulse" />
+                <span className="absolute top-1.5 right-1.5 h-2 w-2 bg-blue-600 rounded-full animate-pulse" />
               </button>
             </div>
 
-            {/* Quick AI Search Shortcut */}
+            {/* Post Property FREE Orange Button */}
+            <button 
+              onClick={() => onNavigate(ActivePage.SELLER_DASHBOARD)}
+              className="flex items-center space-x-1 px-3 py-2 bg-[#ff7a00] hover:bg-[#e05a00] text-white text-xs font-bold rounded-lg shadow-sm transition-all duration-200 cursor-pointer"
+            >
+              <span>Post Property</span>
+              <span className="bg-white text-[#ff7a00] text-[9px] font-extrabold px-1 py-0.2 rounded uppercase">FREE</span>
+            </button>
+
+            {/* Ask AI Helper */}
             <button 
               onClick={() => {
                 const chatbotToggle = document.getElementById("ai-chat-trigger");
                 if (chatbotToggle) chatbotToggle.click();
               }}
-              className="flex items-center space-x-1.5 px-3 py-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-semibold rounded-lg shadow-md shadow-blue-500/15 transition-all duration-200 cursor-pointer"
+              className="flex items-center space-x-1 px-3 py-2 bg-[#005ca8] hover:bg-[#004b87] text-white text-xs font-bold rounded-lg shadow-sm transition-all duration-200 cursor-pointer"
             >
-              <Sparkles className="h-3.5 w-3.5" />
+              <Sparkles className="h-3.5 w-3.5 text-white animate-pulse" />
               <span>Ask AI</span>
             </button>
 
@@ -149,19 +158,19 @@ export default function Navbar({ activePage, onNavigate, savedCount, compareCoun
             <div className="relative">
               <button
                 onClick={() => setProfileOpen(!profileOpen)}
-                className="flex items-center space-x-1.5 p-1 px-2 hover:bg-white/5 rounded-xl border border-white/5 transition-colors cursor-pointer"
+                className="flex items-center space-x-1.5 p-1 px-2 hover:bg-slate-100 rounded-xl border border-slate-200 transition-colors cursor-pointer"
               >
-                <div className="h-7 w-7 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-xs">
+                <div className="h-7 w-7 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-700 font-bold text-xs">
                   VS
                 </div>
-                <ChevronDown className="h-3.5 w-3.5 text-zinc-400" />
+                <ChevronDown className="h-3.5 w-3.5 text-slate-600" />
               </button>
 
               {profileOpen && (
-                <div className="absolute right-0 mt-2 w-56 bg-zinc-950 border border-white/5 rounded-xl shadow-2xl z-50 py-1 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="px-4 py-2.5 border-b border-white/5">
-                    <p className="text-xs text-zinc-500 font-medium">Signed in as</p>
-                    <p className="text-sm font-semibold text-white truncate">vinayaksaxena1@gmail.com</p>
+                <div className="absolute right-0 mt-2 w-56 bg-white border border-slate-200 rounded-xl shadow-2xl z-50 py-1 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
+                  <div className="px-4 py-2.5 border-b border-slate-100">
+                    <p className="text-xs text-slate-400 font-medium">Signed in as</p>
+                    <p className="text-sm font-semibold text-slate-800 truncate">vinayaksaxena1@gmail.com</p>
                   </div>
                   
                   <button
@@ -169,9 +178,9 @@ export default function Navbar({ activePage, onNavigate, savedCount, compareCoun
                       onNavigate(ActivePage.DASHBOARD);
                       setProfileOpen(false);
                     }}
-                    className="w-full text-left px-4 py-2 text-sm text-zinc-300 hover:bg-blue-500/10 hover:text-blue-400 transition-colors flex items-center space-x-2 cursor-pointer"
+                    className="w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-[#005ca8] transition-colors flex items-center space-x-2 cursor-pointer"
                   >
-                    <User className="h-4 w-4 text-zinc-400" />
+                    <User className="h-4 w-4 text-slate-400" />
                     <span>Buyer Profile</span>
                   </button>
 
@@ -180,9 +189,9 @@ export default function Navbar({ activePage, onNavigate, savedCount, compareCoun
                       onNavigate(ActivePage.SELLER_DASHBOARD);
                       setProfileOpen(false);
                     }}
-                    className="w-full text-left px-4 py-2 text-sm text-zinc-300 hover:bg-blue-500/10 hover:text-blue-400 transition-colors flex items-center space-x-2 cursor-pointer"
+                    className="w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-[#005ca8] transition-colors flex items-center space-x-2 cursor-pointer"
                   >
-                    <Briefcase className="h-4 w-4 text-zinc-400" />
+                    <Briefcase className="h-4 w-4 text-slate-400" />
                     <span>Seller Dashboard</span>
                   </button>
 
@@ -191,19 +200,19 @@ export default function Navbar({ activePage, onNavigate, savedCount, compareCoun
                       onNavigate(ActivePage.PRICING);
                       setProfileOpen(false);
                     }}
-                    className="w-full text-left px-4 py-2 text-sm text-zinc-300 hover:bg-blue-500/10 hover:text-blue-400 transition-colors flex items-center space-x-2 cursor-pointer"
+                    className="w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-[#005ca8] transition-colors flex items-center space-x-2 cursor-pointer"
                   >
                     <span>Developer API / Pricing</span>
                   </button>
 
-                  <div className="border-t border-white/5 my-1" />
+                  <div className="border-t border-slate-100 my-1" />
 
                   <button
                     onClick={() => {
                       onNavigate(ActivePage.LOGIN);
                       setProfileOpen(false);
                     }}
-                    className="w-full text-left px-4 py-2 text-sm text-rose-400 hover:bg-rose-500/10 transition-colors cursor-pointer"
+                    className="w-full text-left px-4 py-2 text-sm text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer"
                   >
                     Logout
                   </button>

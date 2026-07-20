@@ -6,10 +6,10 @@
   --font-display: "Space Grotesk", sans-serif;
 }
 
-/* Base Body Style */
+/* Base Body Style - Clean Light Theme inspired by 99acres */
 body {
-  background-color: #050505 !important;
-  color: #f5f5f5;
+  background-color: #f4f6f9 !important;
+  color: #111827 !important;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -21,105 +21,104 @@ body {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #f4f6f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e1e24;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2b2b36;
+  background: #94a3b8;
 }
 
 /* 
- * Sophisticated Dark Base Overrides
- * This remaps standard light-mode classes to premium dark graphite elements
+ * Sophisticated 99acres Light Blue Theme Overrides
  */
 
 /* Containers & Cards */
 .bg-white {
-  background-color: #0c0c0e !important;
+  background-color: #ffffff !important;
 }
-.bg-slate-50\/50, .bg-slate-50, .bg-gray-50, .bg-gray-50\/50, .bg-slate-50\/30 {
-  background-color: #08080a !important;
+.bg-slate-50\/50, .bg-slate-50, .bg-gray-50, .bg-gray-50\/50, .bg-slate-50\/30, .bg-zinc-900\/40, .bg-zinc-900\/20 {
+  background-color: #f8fafc !important;
 }
-.bg-slate-900, .bg-gray-900, .bg-slate-950 {
-  background-color: #050505 !important;
+.bg-slate-900, .bg-slate-950, .bg-zinc-950 {
+  background-color: #0f172a !important; /* Rich deep navy for high-end sections and header hero */
 }
 
 /* Borders */
-.border-gray-100, .border-slate-100, .border-gray-150, .border-slate-200, .border-gray-200, .border-gray-50, .border-slate-150 {
-  border-color: rgba(255, 255, 255, 0.08) !important;
+.border-gray-100, .border-slate-100, .border-gray-150, .border-slate-200, .border-gray-200, .border-gray-50, .border-slate-150, .border-white\/5, .border-white\/10 {
+  border-color: #e2e8f0 !important;
 }
 
-/* Typography Overrides */
-.text-slate-900, .text-gray-900, .text-gray-800, .text-slate-950, .text-gray-950, .text-slate-900, .text-neutral-900 {
-  color: #f5f5f5 !important;
+/* Typography Overrides to Deep High-Contrast Grays */
+.text-slate-900, .text-gray-900, .text-gray-800, .text-slate-950, .text-gray-950, .text-neutral-900, .text-zinc-100 {
+  color: #0f172a !important;
 }
-.text-gray-600, .text-slate-600, .text-gray-700, .text-slate-700 {
-  color: #a3a3a3 !important;
+.text-gray-600, .text-slate-600, .text-gray-700, .text-slate-700, .text-zinc-300 {
+  color: #334155 !important;
 }
-.text-gray-500, .text-slate-500 {
-  color: #8a8a93 !important;
+.text-gray-500, .text-slate-500, .text-zinc-400 {
+  color: #64748b !important;
 }
-.text-gray-400, .text-slate-400 {
-  color: #71717a !important;
+.text-gray-400, .text-slate-400, .text-zinc-500 {
+  color: #94a3b8 !important;
 }
 
 /* Form Inputs, Dropdowns and Ranges */
 input[type="text"], input[type="email"], input[type="password"], textarea, select {
-  background-color: #121215 !important;
-  border-color: rgba(255, 255, 255, 0.12) !important;
-  color: #f5f5f5 !important;
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
 }
 input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus, select:focus {
-  border-color: #3b82f6 !important;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15) !important;
+  border-color: #005ca8 !important;
+  box-shadow: 0 0 0 2px rgba(0, 92, 168, 0.15) !important;
 }
 
-/* Primary Button & Gradient Transitions */
-.from-emerald-600, .from-emerald-500 {
-  --tw-gradient-from: #2563eb !important;
-  --tw-gradient-to: #4f46e5 !important;
+/* Primary Button & Gradient Transitions mapped to 99acres Blue & Orange */
+.from-emerald-600, .from-emerald-500, .from-blue-600 {
+  --tw-gradient-from: #005ca8 !important;
+  --tw-gradient-to: #004b87 !important;
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
 }
-.to-teal-500, .to-teal-400, .to-teal-600, .to-teal-300 {
-  --tw-gradient-to: #4f46e5 !important;
+.to-teal-500, .to-teal-400, .to-teal-600, .to-teal-300, .to-indigo-500 {
+  --tw-gradient-to: #004b87 !important;
 }
-.bg-emerald-600, .bg-emerald-500, .bg-teal-600, .bg-slate-950 {
-  background-color: #2563eb !important;
+.bg-emerald-600, .bg-emerald-500, .bg-teal-600, .bg-blue-600 {
+  background-color: #005ca8 !important;
 }
-.bg-emerald-600\/90 {
-  background-color: rgba(37, 99, 235, 0.9) !important;
+.bg-emerald-600\/90, .bg-blue-600\/90 {
+  background-color: rgba(0, 92, 168, 0.9) !important;
 }
-.bg-emerald-50, .bg-emerald-500\/10, .bg-emerald-100\/50, .bg-emerald-100, .bg-teal-50 {
-  background-color: rgba(59, 130, 246, 0.08) !important;
+.bg-emerald-50, .bg-emerald-500\/10, .bg-emerald-100\/50, .bg-emerald-100, .bg-teal-50, .bg-blue-500\/10, .bg-blue-50 {
+  background-color: rgba(0, 92, 168, 0.05) !important;
 }
-.border-emerald-200, .border-emerald-500\/30, .border-emerald-100 {
-  border-color: rgba(59, 130, 246, 0.25) !important;
+.border-emerald-200, .border-emerald-500\/30, .border-emerald-100, .border-blue-500\/30 {
+  border-color: rgba(0, 92, 168, 0.15) !important;
 }
-.text-emerald-600, .text-emerald-700, .text-emerald-400, .text-teal-400 {
-  color: #60a5fa !important;
+.text-emerald-600, .text-emerald-700, .text-emerald-400, .text-teal-400, .text-blue-500, .text-blue-600, .text-blue-400 {
+  color: #005ca8 !important;
 }
 .text-emerald-800 {
-  color: #93c5fd !important;
+  color: #004b87 !important;
 }
-.hover\:bg-emerald-500:hover, .hover\:bg-emerald-700:hover, .hover\:from-emerald-700:hover {
-  background-color: #1d4ed8 !important;
+.hover\:bg-emerald-500:hover, .hover\:bg-emerald-700:hover, .hover\:from-emerald-700:hover, .hover\:bg-blue-500:hover, .hover\:bg-blue-700:hover {
+  background-color: #004b87 !important;
   background-image: none !important;
 }
-.hover\:text-emerald-600:hover, .hover\:text-emerald-500:hover {
-  color: #60a5fa !important;
+.hover\:text-emerald-600:hover, .hover\:text-emerald-500:hover, .hover\:text-blue-500:hover {
+  color: #004b87 !important;
 }
 .accent-emerald-600 {
-  accent-color: #3b82f6 !important;
+  accent-color: #005ca8 !important;
 }
 
-/* Glassmorphism Classes */
+/* Glassmorphism Classes for Light UI */
 .glass-panel {
-  background: rgba(12, 12, 14, 0.7);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(0, 92, 168, 0.08);
 }
 
 .glow-card {
@@ -133,6 +132,6 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 92, 168, 0.2), transparent);
 }
 
